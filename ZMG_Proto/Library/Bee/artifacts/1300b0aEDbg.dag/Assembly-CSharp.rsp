@@ -361,7 +361,17 @@
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1300b0aEDbg.dag/UnityEngine.UI.ref.dll"
-"Assets/Scripts/FPS_Controller.cs"
+"Assets/Scripts/EnemyScript/EnemyAI.cs"
+"Assets/Scripts/EnemyScript/EnemyKillCount.cs"
+"Assets/Scripts/EnemyScript/KillCombo.cs"
+"Assets/Scripts/EnemyScript/WaveSpawner.cs"
+"Assets/Scripts/ManagerScripts/LevelManager.cs"
+"Assets/Scripts/ManagerScripts/ScoreManager.cs"
+"Assets/Scripts/ManagerScripts/UIManager.cs"
+"Assets/Scripts/PlayerScripts/FPS_Controller.cs"
+"Assets/Scripts/PlayerScripts/GlobalReferences.cs"
+"Assets/Scripts/PlayerScripts/PlayerHealth.cs"
+"Assets/Scripts/PlayerScripts/StateManager.cs"
 -langversion:9.0
 
 /deterministic
