@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/FPS_Movement_Mobile.unity
+    guid: e27ffa60b62ed594d9305a750827289c
   m_configObjects:
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: 89996c59ccdb226448a03ef768e9f3cb, type: 2}
