@@ -10,6 +10,8 @@ public class FPS_Controller : MonoBehaviour
     //Referencing character controller on Player capsual
     public CharacterController characterController;
 
+    //GameObject buttonShoot;
+
     //Player Settings Variables
     public float camSens = 0;
     public float playerMoveSpeed;
@@ -39,6 +41,7 @@ public class FPS_Controller : MonoBehaviour
         screenHalfWidth = Screen.width / 2;
 
         characterController = GetComponent<CharacterController>();
+        //buttonShoot = GameObject.FindGameObjectWithTag("ButtonShoot");
 
         //Figuring out movement input dead zone
         inputDeadZone = Mathf.Pow(Screen.height / inputDeadZone, 2);
@@ -94,7 +97,7 @@ public class FPS_Controller : MonoBehaviour
                     }
                     else if (t.position.x > screenHalfWidth && rightHandFinger == -1)
                     {
-                        rightHandFinger = t.fingerId;
+                        rightHandFinger = t.fingerId;                  
                     }
                     break;
                 case TouchPhase.Ended:

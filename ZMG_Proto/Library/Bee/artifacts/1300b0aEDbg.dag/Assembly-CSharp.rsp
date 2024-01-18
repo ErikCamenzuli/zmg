@@ -370,6 +370,9 @@
 "Assets/Scripts/ManagerScripts/UIManager.cs"
 "Assets/Scripts/PlayerScripts/FPS_Controller.cs"
 "Assets/Scripts/PlayerScripts/GlobalReferences.cs"
+"Assets/Scripts/PlayerScripts/Gun/Bullet.cs"
+"Assets/Scripts/PlayerScripts/Gun/BulletPool.cs"
+"Assets/Scripts/PlayerScripts/Gun/Weapon.cs"
 "Assets/Scripts/PlayerScripts/PlayerHealth.cs"
 "Assets/Scripts/PlayerScripts/StateManager.cs"
 -langversion:9.0
