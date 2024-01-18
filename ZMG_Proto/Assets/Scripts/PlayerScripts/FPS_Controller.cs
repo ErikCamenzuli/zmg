@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class FPS_Controller : MonoBehaviour
 {
     //Referencing the camera on Player
@@ -9,10 +10,13 @@ public class FPS_Controller : MonoBehaviour
     //Referencing character controller on Player capsual
     public CharacterController characterController;
 
+    //GameObject buttonShoot;
+
     //Player Settings Variables
     public float camSens = 0;
     public float playerMoveSpeed;
     public float inputDeadZone;
+    private Vector3 moveVector;
 
     //Player Movement
     private Vector2 moveStartingPosition;
@@ -36,6 +40,9 @@ public class FPS_Controller : MonoBehaviour
         //We only need to find out the screen size once, so we do it in the Start() function
         screenHalfWidth = Screen.width / 2;
 
+        characterController = GetComponent<CharacterController>();
+        //buttonShoot = GameObject.FindGameObjectWithTag("ButtonShoot");
+
         //Figuring out movement input dead zone
         inputDeadZone = Mathf.Pow(Screen.height / inputDeadZone, 2);
     }
@@ -44,6 +51,7 @@ public class FPS_Controller : MonoBehaviour
     void Update()
     {
         TouchInput();
+        PlayerGravity();
 
         if(rightHandFinger != -1)
         {
@@ -58,6 +66,17 @@ public class FPS_Controller : MonoBehaviour
         }
     }
 
+    private void PlayerGravity()
+    {
+        moveVector = Vector3.zero;
+
+        if(characterController.isGrounded == false)
+        {
+            moveVector += Physics.gravity;
+        }
+
+        characterController.Move(moveVector * Time.deltaTime);
+    }
 
     void TouchInput()
     {
@@ -78,7 +97,7 @@ public class FPS_Controller : MonoBehaviour
                     }
                     else if (t.position.x > screenHalfWidth && rightHandFinger == -1)
                     {
-                        rightHandFinger = t.fingerId;
+                        rightHandFinger = t.fingerId;                  
                     }
                     break;
                 case TouchPhase.Ended:
