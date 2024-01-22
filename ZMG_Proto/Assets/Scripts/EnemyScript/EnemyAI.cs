@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int amount)

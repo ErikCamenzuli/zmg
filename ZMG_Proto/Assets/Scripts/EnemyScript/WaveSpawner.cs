@@ -5,14 +5,14 @@ using UnityEngine.Events;
 public class WaveSpawner : MonoBehaviour
 {
     //Reference of enemies/spawn points array
-    private GameObject[] enemyPrefabs;
-    private Transform[] spawnPoints;
+    [SerializeField]private GameObject[] enemyPrefabs;
+    [SerializeField] private Transform[] spawnPoints;
 
     //Enemy Variable
-    private int baseEnemies = 0;
-    private float enemiesPerSecond = 0.5f;
-    private float timeBetweenWaves = 5f;
-    private float difficultyWaveScale = 0.75f;
+    [SerializeField] private int baseEnemies = 0;
+    [SerializeField] private float enemiesPerSecond = 0.5f;
+    [SerializeField] private float timeBetweenWaves = 5f;
+    [SerializeField] private float difficultyWaveScale = 0.75f;
     private int currentWave = 1;
     private int enemiesAlive;
     private int enemiesLeft;
