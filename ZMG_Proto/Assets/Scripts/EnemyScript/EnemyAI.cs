@@ -7,12 +7,12 @@ public class EnemyAI : MonoBehaviour
 {
     public int points;
     public NavMeshAgent enemyAgent;
-    GameObject target;
+    Transform target;
 
-    public int health = 50;
+    public static int health = 50;
     public PlayerHealth playerHealth;
-    public int attackDamage;
-    public int enemyPoints;
+    public int attackDamage = 10;
+    private int enemyPoints = 10;
     private int enemyScore;
     public int xpAmount;
     public EnemyKillCount killCounter;
@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         killCounter = GameObject.FindGameObjectWithTag("EnemyManager").GetComponent<EnemyKillCount>();
     }
 
@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Die()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void TakeDamage(int amount)
@@ -43,7 +43,8 @@ public class EnemyAI : MonoBehaviour
         {
             enemyScore = enemyPoints * killCounter.kills;
             WaveSpawner.onEnemyDestroy.Invoke();
-            ScoreManager.scoreInstance.AddPoints(enemyScore);
+            ScoreManager.scoreInstance.AddPoint(points);
+            ScoreManager.scoreInstance.AddPoint(enemyScore);
             killCounter.AddKill();
             Die();
         }
@@ -51,14 +52,18 @@ public class EnemyAI : MonoBehaviour
 
     private void GoToTarget()
     {
-        enemyAgent.SetDestination(target.transform.position);
+        enemyAgent.SetDestination(target.position);
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if(collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerHealth>().UpdatePlayerHealth(-attackDamage);
+            if(collision.gameObject.TryGetComponent<PlayerHealth>(out PlayerHealth healthComponent))
+            {
+                healthComponent.UpdatePlayerHealth(attackDamage);
+                Debug.Log("Player Hit for: " + attackDamage);
+            }
         }
     }
 

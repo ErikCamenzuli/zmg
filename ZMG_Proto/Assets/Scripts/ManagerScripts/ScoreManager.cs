@@ -6,9 +6,10 @@ using TMPro;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager scoreInstance;
-    public TextMeshProUGUI myScoreText;
-    public TextMeshProUGUI playerDeathScore;
+    [SerializeField] TextMeshProUGUI myScoreText;
+    [SerializeField] TextMeshProUGUI playerDeathScore;
     public int score;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +22,7 @@ public class ScoreManager : MonoBehaviour
         scoreInstance = this;
     }
 
-    public void AddPoints(int pointValue)
+    public void AddPoint(int pointValue)
     {
         score = score + pointValue;
         myScoreText.text = score.ToString() + "";

@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody body;
     public float lifeTime;
+    public int damage = 25;
 
     public void Activate(Vector3 position, Vector3 velocity)
     {
@@ -21,7 +22,7 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(lifeTime);
         Deactivate();
     }
-
+    
     public void Deactivate()
     {
         BulletPool.main.AddToPool(this);
@@ -31,9 +32,12 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        //add code here later
-        Debug.Log("HIT!");
 
+        if(other.gameObject.TryGetComponent(out EnemyAI enemyComponent))
+        {
+            enemyComponent.TakeDamage(damage);
+            Debug.Log(EnemyAI.health);
+        }
         Deactivate();
     }
 
