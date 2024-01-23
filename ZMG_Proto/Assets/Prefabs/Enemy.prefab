@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cc7f4b3fff3344044b2e7fc0b3d45a0b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -135,9 +135,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: 10
   enemyAgent: {fileID: 6772031922001341435}
-  health: 50
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 5812759066716182538, guid: 3c8225f857f2dea438964e0368ccf295,
+    type: 3}
   attackDamage: 10
   enemyPoints: 10
   xpAmount: 10
-  killCounter: {fileID: 0}
+  killCounter: {fileID: 5727719514787946456, guid: d55057aaaf45cde4ebc514c59f2a7699,
+    type: 3}
